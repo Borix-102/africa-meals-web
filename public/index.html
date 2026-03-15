@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Afrika Meals — Commandez vos plats préférés des meilleurs restaurants et faites-vous livrer à domicile.">
+  <title>Afrika Meals — Livraison de repas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #392800;
+      --primary-light: #aa6900;
+      --accent: #ffae00;
+      --secondary: #c84c28;
+      --cream: #fdf8f0;
+      --warm-white: #fffbf5;
+      --text: #2c2416;
+      --text-muted: #6b5d4a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+    a { color: var(--primary-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 1.5rem;
+      background: rgba(253, 248, 240, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(57, 40, 0, 0.08);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--primary);
+    }
+    .logo span { color: var(--accent); }
+    .nav a {
+      margin-left: 1.5rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .nav a:hover { color: var(--primary-light); text-decoration: none; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      padding: 6rem 1.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(165deg, var(--cream) 0%, #f5ebe0 50%, #fef3e2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 70%;
+      height: 140%;
+      background: radial-gradient(ellipse, rgba(255, 174, 0, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 640px; }
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      line-height: 1.2;
+      margin: 0 0 1rem;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin: 0 0 2rem;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.75rem;
+      background: var(--primary);
+      color: white;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 20px rgba(57, 40, 0, 0.25);
+    }
+    .cta:hover { background: var(--primary-light); text-decoration: none; color: white; transform: translateY(-2px); }
+
+    /* Features */
+    .features {
+      padding: 4rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      color: var(--primary);
+      margin: 0 0 2.5rem;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      padding: 1.75rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(57, 40, 0, 0.06);
+      border: 1px solid rgba(57, 40, 0, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(57, 40, 0, 0.1); }
+    .feature-card .icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--accent), var(--primary-light));
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .feature-card h3 { font-size: 1.2rem; margin: 0 0 0.5rem; color: var(--primary); }
+    .feature-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+
+    /* CTA block */
+    .cta-block {
+      padding: 4rem 1.5rem;
+      text-align: center;
+      background: linear-gradient(180deg, #f5ebe0 0%, var(--cream) 100%);
+    }
+    .cta-block h2 { color: var(--primary); margin: 0 0 0.75rem; font-size: clamp(1.5rem, 3vw, 2rem); }
+    .cta-block p { color: var(--text-muted); margin: 0 0 1.5rem; }
+    .cta-block .cta { margin: 0 0.25rem 0.5rem; }
+
+    /* Footer */
+    .footer {
+      padding: 2rem 1.5rem;
+      background: var(--primary);
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer .logo { color: white; }
+    .footer .logo span { color: var(--accent); }
+    .footer-links { margin-top: 1rem; }
+    .footer-links a {
+      color: rgba(255,255,255,0.85);
+      margin: 0 1rem;
+      font-size: 0.95rem;
+    }
+    .footer-links a:hover { color: white; text-decoration: none; }
+    .footer small { display: block; margin-top: 1.25rem; opacity: 0.8; font-size: 0.85rem; }
+
+    @media (max-width: 600px) {
+      .nav a { margin-left: 1rem; }
+      .hero { padding-top: 5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo">Afrika <span>Meals</span></a>
+      <nav class="nav">
+        <a href="#features">Pourquoi nous</a>
+        <a href="#download">Télécharger</a>
+        <a href="/privacy">Confidentialité</a>
+        <a href="/terms">CGU</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Vos plats préférés, <span class="accent">livrés chez vous</span></h1>
+      <p>Découvrez les meilleurs restaurants et commandez en quelques taps. Livraison rapide et simple.</p>
+      <a href="#download" class="cta">Télécharger l’app</a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <h2>Pourquoi Afrika Meals</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">🍽️</div>
+        <h3>Restaurants variés</h3>
+        <p>Un large choix de cuisines et de restaurants pour tous les goûts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📦</div>
+        <h3>Commande simple</h3>
+        <p>Parcourez le menu, personnalisez et payez en toute sécurité.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🚀</div>
+        <h3>Livraison rapide</h3>
+        <p>Suivez votre commande en direct jusqu’à votre porte.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-block" id="download">
+    <h2>Prêt à commander ?</h2>
+    <p>Téléchargez l’application Afrika Meals sur iOS ou Android.</p>
+    <a href="https://apps.apple.com" class="cta" aria-label="App Store">App Store</a>
+    <a href="https://play.google.com" class="cta" aria-label="Google Play">Google Play</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="logo">Afrika <span>Meals</span></span>
+      <div class="footer-links">
+        <a href="/privacy">Politique de confidentialité</a>
+        <a href="/terms">Conditions d’utilisation</a>
+      </div>
+      <small>© 2025 Afrika Meals. Tous droits réservés.</small>
+    </div>
+  </footer>
+</body>
+</html>
